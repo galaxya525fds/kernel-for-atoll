@@ -27,4 +27,5 @@ cd $(pwd)/AIK/
 ./repackimg.sh
 mv image-new.img boot.img
 tar -cvf $(pwd)/Kernel-for-atoll.tar boot.img
-mv $(pwd)/Kernel-for-atoll.tar ../../
+rm -f boot.img
+mv $(pwd)/Kernel-for-atoll.tar ../
