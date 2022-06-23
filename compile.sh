@@ -3,6 +3,10 @@
 
 rm -rf $(pwd)/out
 rm -f $(pwd)/Kernel-for-atoll.tar
+rm -f $(pwd)/AIK/split_img/boot.img-kernel
+rm -f $(pwd)/AIK/split_img/boot.img-dtb
+rm -f $(pwd)/AIK/*.gz
+rm -f $(pwd)/AIK/*.img
 
 export ARCH=arm64
 export PATH="${HOME}/aarch64-linux-android-4.9/bin:${HOME}/linux-x86/clang-r383902/bin:${PATH}"
@@ -20,8 +24,6 @@ DTC_EXT=$(pwd)/tools/dtc
 mv $(pwd)/out/arch/arm64/boot/dts/qcom/*.dtb $(pwd)/AIK/split_img/boot.img-dtb
 mv $(pwd)/out/arch/arm64/boot/Image $(pwd)/AIK/split_img/boot.img-kernel
 cd $(pwd)/AIK/
-rm -f $(pwd)/*.gz
-rm -f $(pwd)/image-new.img
 ./repackimg.sh
 mv image-new.img boot.img
 tar -cvf $(pwd)/Kernel-for-atoll.tar boot.img
